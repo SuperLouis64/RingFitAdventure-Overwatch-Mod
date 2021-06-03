@@ -8,7 +8,7 @@ The idea is to try get some of the excerises from Ring Fit Adventure to work wit
 - JoyCon on the RingCon has the rest of the buttons for overwatch!
 
 ### Hardware Needed
-This mod needs some hardware to get running. I have a full tutorial on my website if you need more information: <https://www.controllerbend.com/ringfitbotw.html>
+This mod needs some hardware to get running. I have a full tutorial on my website if you need more information: <https://www.controllerbend.com/ring-fit-set-up.html>
 - Titan Two Input Converter
 - RingCon and Legstrap (not needed but helps)
 - Titan Two Wireless Expansion Kit
