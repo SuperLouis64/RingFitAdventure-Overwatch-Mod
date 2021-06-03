@@ -1,0 +1,87 @@
+#pragma METAINFO("Overwatch_RingFit", 1, 0, "SuperLouis64")
+
+/*
+This script allows you to play OW with a ring fit controller
+Make sure to change ability 1 to SQUARE or whatever the left face button is_active
+
+Input changes:
+- Jogging moves the character forward.
+- Squatting and pressing Triangle activates ULT
+- "Squeezing the ringcon" does R2
+
+*/
+
+
+int runCheck; // check the value from my "running algorithm
+
+init
+{
+	runCheck = 0;
+}
+
+main 
+{
+	nowRunning();
+	JoyConDrift(); // pay $80 to fix your joycon drift
+	
+	// if you are running or above pace, do this
+	if(runCheck >= 70)
+		{					
+		set_val(STICK_2_Y, -100.0); // Run to move forward
+		}
+		
+	// terrible way to determine if ringcon is squeezed. Titan Two doesn't grab the flex sensor
+	// however this is what I got from the ringcon to squeeze to use item
+	// You can also do this without the ringcon, just punch and it should do the same input
+	if(get_val(ACCEL_2_X) < -25.0)
+		{
+			set_val(BUTTON_8, 100.0); // use L2
+		}	 
+
+
+		
+	if(get_val(BUTTON_14) == 100.0) // to ult press triangle and squat!
+		{
+			if(get_val(ACCEL_1_Z) < -19.00) // check squat is happening
+				{
+					set_val(BUTTON_14, 100.0);
+				}
+			else
+				{
+					set_val(BUTTON_14, 0.0);
+				}	
+		}
+		
+}
+
+void JoyConDrift()
+{
+	
+	if(get_val(STICK_2_X) < 20.0 && get_val(STICK_2_X) > - 20.0)
+		{
+			set_val(STICK_2_X, 0.0);
+		}
+		
+	if(get_val(STICK_2_Y) < 20.0 && get_val(STICK_2_Y) > - 20.0)
+		{
+			set_val(STICK_2_Y, 0.0);
+		}
+
+
+}
+
+// the command to let me do things only if I'm running
+// This function checks if the joycons are shaking in your legstrap due to running
+void nowRunning()
+{
+	if(get_val(ACCEL_1_Y) < -30.6)
+		{
+			runCheck = 100;	
+		
+		}
+	if(get_val(ACCEL_1_Y) < -23.8 && get_val(ACCEL_1_Y) > -24.6)
+		{
+			runCheck--;
+		}
+
+}
