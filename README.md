@@ -1,5 +1,5 @@
 # RingFitAdventure-Overwatch-Mod
-How to play Overwatch with the Ring Fit Adventure Mod! This requires the Titan Two hardware
+How to play Overwatch with the Ring Fit Adventure Mod! This requires the Titan Two hardware. Watch the YouTube Video explaining it: <https://www.youtube.com/watch?v=zk0rxY8Z2Zk>
 
 
 ### Overall Design of the Mod
